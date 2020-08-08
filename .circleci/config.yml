@@ -30,6 +30,7 @@ jobs:
       - run:
           name: Code Has Arrived
           command: |
+            set +e
             pwd
             ls -al
             cd /project | echo 'That should look familiar'
