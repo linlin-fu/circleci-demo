@@ -1,32 +1,17 @@
-version: 2
+version: 2.1
 jobs:
-  job1:
+  build:
     docker:
-      - image: circleci/node:10
-
+      - image: alpine:3.7
     steps:
       - checkout
-      - run: npm install
-      - run: npm test
-
-  job2:
-    docker:
-      - image: circleci/node:10
-
-    steps:
-      - checkout
-      - run: cat README.md
-
-workflows:
-  version: 2
-  one:
-    jobs:
-      - job1
-      - job2
-
-  two:
-    jobs:
-      - job1
-      - job2:
-          requires:
-            - job1
+      - run:
+          name: The First Step
+          command: |
+            echo 'Hello World!'
+            echo 'This is the delivery pipeline'
+      - run:
+          name: Code Has Arrived
+          command: |
+            ls -al
+            echo 'That should look familiar'
