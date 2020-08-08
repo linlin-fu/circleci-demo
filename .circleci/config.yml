@@ -14,7 +14,7 @@ jobs:
           name: the second step
           command: |
             echo 'Hello World!'
-            cat ~/.bash_profile
+            source ~/.bash_profile
             echo 'This is the delivery pipeline'
   second-job:
     docker:
@@ -24,6 +24,7 @@ jobs:
       - run:
           name: default shell test
           command: |
+            set +e
             echo 'default shell!'
             cd /project
             echo 'This is the default shell test with set e'
