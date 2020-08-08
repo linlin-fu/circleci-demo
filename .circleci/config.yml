@@ -34,14 +34,14 @@ jobs:
             pwd
             ls -al
             cd /project | echo 'this is a pipe'
-    third-job:
-      machine: ubuntu-1604:201903-01
-      steps:
-        - run: echo hello world
-        - run:
-            name: Running tests
-            command: make test
-        - checkout
+  third-job:
+    machine: ubuntu-1604:201903-01
+    steps:
+      - run: echo hello world
+      - run:
+          name: Running tests
+          command: make test
+      - checkout
 
 
 workflows:
