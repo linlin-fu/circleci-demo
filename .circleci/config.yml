@@ -13,5 +13,6 @@ jobs:
       - run:
           name: Code Has Arrived
           command: |
+            pwd
             ls -al
             echo 'That should look familiar'
