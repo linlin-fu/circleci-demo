@@ -14,6 +14,7 @@ jobs:
           name: the second step
           command: |
             echo 'Hello World!'
+            cat ~/.bash_profile
             echo 'This is the delivery pipeline'
   second-job:
     docker:
@@ -21,19 +22,19 @@ jobs:
     working_directory: /build
     steps:
       - run:
-          name: run3
+          name: default shell test
           command: |
-            set +e
-            echo 'Hello World!'
+#            set +e
+            echo 'default shell!'
             cd /project
-            echo 'This is the delivery pipeline'
+            echo 'This is the default shell test with set e'
       - run:
-          name: Code Has Arrived
+          name: default shell with pipe
           command: |
-            set +o pipefail
+#            set +o pipefail
             pwd
             ls -al
-            cd /project | echo 'That should look familiar'
+            cd /project | echo 'this is a pipe'
 
 workflows:
   version: 2
