@@ -34,3 +34,10 @@ jobs:
             ls -al
             cd /project
             echo 'That should look familiar'
+
+workflows:
+  version: 2
+  one:
+    jobs:
+      - first-job
+      - second-job
