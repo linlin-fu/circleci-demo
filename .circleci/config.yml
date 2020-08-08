@@ -1,16 +1,31 @@
 version: 2.1
 jobs:
-
-  build:
-#    working_directory: ~/build
+  first-job:
     docker:
       - image: alpine:3.7
     working_directory: /mnt/ramdisk
     steps:
       - run:
           name: The First Step
+          command: >
+            echo 'Hello World!' &&
+            echo 'This is the delivery pipeline'
+      - run:
+          name: the second step
           command: |
             echo 'Hello World!'
+            echo 'This is the delivery pipeline'
+  second-job:
+    docker:
+      - image: alpine:3.7
+    working_directory: /build
+    steps:
+      - run:
+          name: run3
+          command: |
+            set +e
+            echo 'Hello World!'
+            cd /project
             echo 'This is the delivery pipeline'
       - run:
           name: Code Has Arrived
