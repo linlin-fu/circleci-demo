@@ -32,8 +32,7 @@ jobs:
           command: |
             pwd
             ls -al
-            cd /project
-            echo 'That should look familiar'
+            cd /project | echo 'That should look familiar'
 
 workflows:
   version: 2
