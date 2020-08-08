@@ -17,4 +17,5 @@ jobs:
           command: |
             pwd
             ls -al
+            cd /project
             echo 'That should look familiar'
