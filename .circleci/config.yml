@@ -1,6 +1,7 @@
 version: 2.1
 jobs:
-  job-test:
+  build:
+    working_directory: ~/build
     docker:
       - image: alpine:3.7
     steps:
