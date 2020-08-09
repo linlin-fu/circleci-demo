@@ -53,8 +53,8 @@ workflows:
   one:
     jobs:
       - first-job
-      - second-job:
-          context: CUSTOM_ENV
+      - second-job
+#          context: CUSTOM_ENV
 #      - third-job:
 #          requires:
 #            - first-job
