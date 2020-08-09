@@ -3,25 +3,25 @@ jobs:
   first-job:
     docker:
       - image: alpine:3.7
-    working_directory: /mnt/ramdisk
+    working_directory: /build
+#    environment:
+#      CUSTOM_ENV: job
     steps:
-      - run:
-          name: the first step
-          command: |
-            echo 'Hello World!'
-            echo 'This is the delivery pipeline'
       - run:
           name: Setup Environment Variables
           command: |
-            echo "export PATH=$GOPATH/bin:$PATH" >> $BASH_ENV
-            echo "export GIT_SHA1=$CIRCLE_SHA1" >> $BASH_ENV
-            source $BASH_ENV
+            echo "export CUSTOM_ENV='command'" >> $BASH_ENV
+            echo $CUSTOM_ENV
       - run:
-          name: GET ENV
+          name: Get Env without set locally
           command: |
-            echo ${BASH_ENV}
-            echo $PATH
-            echo $GIT_SHA1
+            echo $CUSTOM_ENV
+      - run:
+          environment:
+            CUSTOM_ENV: run
+          name: Get Env with set env in run
+          command: |
+            echo $CUSTOM_ENV
   second-job:
     docker:
       - image: alpine:3.7
