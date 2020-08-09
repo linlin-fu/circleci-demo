@@ -1,8 +1,14 @@
 version: 2.1
+executors:
+  my-executor:
+    environment:
+      CUSTOM_ENV: executor
+    docker:
+      - image: circleci/ruby:2.5.1-node-browsers
 jobs:
   first-job:
     docker:
-      - image: alpine:3.7
+      - image: my-executor
     working_directory: /build
     environment:
       CUSTOM_ENV: job
@@ -38,8 +44,6 @@ jobs:
             ls -al
             cd /project | echo 'this is a pipe'
   third-job:
-    docker:
-      - image: alpine:3.7
     machine:
       image: ubuntu-1604:201903-01
     steps:
