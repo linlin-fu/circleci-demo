@@ -58,6 +58,6 @@ workflows:
     jobs:
       - first-job
       - second-job
-      - third-job
+      - third-job:
           requires:
             - first-job
