@@ -7,8 +7,9 @@ executors:
       - image: circleci/ruby:2.5.1-node-browsers
 jobs:
   first-job:
-    docker:
-      - image: my-executor
+#    docker:
+#      - image: alpine:3.7
+    executor: my-executor
     working_directory: /build
     environment:
       CUSTOM_ENV: job
@@ -22,8 +23,9 @@ jobs:
           name: Get Env with set env in run
           command: echo $CUSTOM_ENV
   second-job:
-    docker:
-      - image: alpine:3.7
+#    docker:
+#      - image: alpine:3.7
+    executor: my-executor
     working_directory: /build
     steps:
       - run:
