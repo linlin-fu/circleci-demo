@@ -15,12 +15,13 @@ jobs:
           command: |
             echo "export PATH=$GOPATH/bin:$PATH" >> $BASH_ENV
             echo "export GIT_SHA1=$CIRCLE_SHA1" >> $BASH_ENV
-            echo $BASH_ENV
+            source $BASH_ENV
       - run:
           name: GET ENV
           command: |
-            echo $PATH
-            echo $GIT_SHA1
+            echo 'bash_env is $BASH_ENV'
+            echo 'path is $PATH'
+            echo 'git is $GIT_SHA1'
   second-job:
     docker:
       - image: alpine:3.7
@@ -58,3 +59,4 @@ workflows:
       - first-job
       - second-job
       - third-job
+        require: first-job
