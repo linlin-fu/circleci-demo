@@ -19,7 +19,8 @@ jobs:
       - run:
           name: GET ENV
           command: |
-            echo 'bash_env is $BASH_ENV'
+            echo 'bash_env is ${BASH_ENV}'
+            echo ${BASH_ENV}
             echo 'path is $PATH'
             echo 'git is $GIT_SHA1'
   second-job:
