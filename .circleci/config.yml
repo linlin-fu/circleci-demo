@@ -38,6 +38,8 @@ jobs:
             ls -al
             cd /project | echo 'this is a pipe'
   third-job:
+    docker:
+      - image: alpine:3.7
     machine:
       image: ubuntu-1604:201903-01
     steps:
@@ -55,6 +57,6 @@ workflows:
       - first-job
       - second-job
 #          context: CUSTOM_ENV
-#      - third-job:
+      - third-job
 #          requires:
 #            - first-job
