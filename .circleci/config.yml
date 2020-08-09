@@ -10,7 +10,7 @@ jobs:
 #    docker:
 #      - image: alpine:3.7
     executor: my-executor
-    working_directory: /build
+#    working_directory: /build
     environment:
       CUSTOM_ENV: job
     steps:
@@ -26,7 +26,7 @@ jobs:
 #    docker:
 #      - image: alpine:3.7
     executor: my-executor
-    working_directory: /build
+#    working_directory: /build
     steps:
       - run:
           name: Get env
