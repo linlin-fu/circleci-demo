@@ -21,6 +21,9 @@ jobs:
     working_directory: /build
     steps:
       - run:
+          name: Get env
+          command: echo $CUSTOM_ENV
+      - run:
           name: default shell test
           command: |
             set +e
@@ -50,7 +53,8 @@ workflows:
   one:
     jobs:
       - first-job
-#      - second-job
+      - second-job:
+          context: CUSTOM_ENV
 #      - third-job:
 #          requires:
 #            - first-job
