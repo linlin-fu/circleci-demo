@@ -6,16 +6,16 @@ jobs:
     working_directory: /mnt/ramdisk
     steps:
       - run:
-          name: The First Step
-          command: >
-            echo 'Hello World!' &&
-            echo 'This is the delivery pipeline'
-      - run:
-          name: the second step
+          name: the first step
           command: |
             echo 'Hello World!'
-            source ~/.bash_profile
             echo 'This is the delivery pipeline'
+      - run:
+          name: Setup Environment Variables
+          command: |
+            echo "export PATH=$GOPATH/bin:$PATH" >> $BASH_ENV
+            echo "export GIT_SHA1=$CIRCLE_SHA1" >> $BASH_ENV
+            echo $BASH_ENV
   second-job:
     docker:
       - image: alpine:3.7
@@ -31,6 +31,7 @@ jobs:
       - run:
           name: default shell with pipe
           command: |
+            set +o pipefail
             pwd
             ls -al
             cd /project | echo 'this is a pipe'
@@ -39,10 +40,10 @@ jobs:
       image: ubuntu-1604:201903-01
     steps:
       - run: echo hello world
+      - checkout
       - run:
           name: Running tests
-          command: make test
-      - checkout
+          command: echo test runing
 
 
 workflows:
