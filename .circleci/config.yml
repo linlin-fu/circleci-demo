@@ -14,8 +14,9 @@ jobs:
       - run:
           name: Get env
           command: |
-          echo export CUSTOM_ENV='command' >> $BASH_ENV
-          echo CUSTOM_ENV
+          echo 'export CUSTOM_ENV=command' >> $BASH_ENV
+          source $BASH_ENV
+          echo $CUSTOM_ENV
       - run:
 #          environment:
 #            CUSTOM_ENV: run
