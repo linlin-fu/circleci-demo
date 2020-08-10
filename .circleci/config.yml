@@ -9,7 +9,7 @@ jobs:
   first-job:
     docker:
       - image: alpine:3.7
-    executor: my-executor
+#    executor: my-executor
     environment:
       CUSTOM_ENV: job
     steps:
@@ -24,7 +24,6 @@ jobs:
   second-job:
     docker:
       - image: alpine:3.7
-    executor: my-executor
     steps:
       - run:
           name: Get env
@@ -32,18 +31,19 @@ jobs:
       - run:
           name: default shell test
           command: |
+            set +e
             echo 'default shell!'
             cd /test
             echo 'This is the default shell test with set e'
       - run:
-          when: always
+#          when: always
           name: default shell with pipe
           command: |
             pwd
             ls -al
             cd /test | echo 'this is a pipe'
   third-job:
-    executor: my-executor
+#    executor: my-executor
     machine:
       image: ubuntu-1604:201903-01
     steps:
