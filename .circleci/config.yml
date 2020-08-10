@@ -39,6 +39,7 @@ jobs:
 #          when: always
           name: default shell with pipe
           command: |
+            set +o pipefail
             pwd
             ls -al
             cd /test | echo 'this is a pipe'
