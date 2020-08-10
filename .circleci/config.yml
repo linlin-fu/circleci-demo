@@ -22,27 +22,24 @@ jobs:
           name: Get Env with set env in run
           command: echo $CUSTOM_ENV
   second-job:
-    docker:
-      - image: alpine:3.7
+    executor: my-executor
     steps:
       - run:
           name: Get env
           command: echo $CUSTOM_ENV
-      - run:
-          name: default shell test
-          command: |
-            set +e
-            echo 'default shell!'
-            cd /test
-            echo 'This is the default shell test with set e'
-      - run:
-#          when: always
-          name: default shell with pipe
-          command: |
-            set +o pipefail
-            pwd
-            ls -al
-            cd /test | echo 'this is a pipe'
+#      - run:
+#          name: default shell test
+#          command: |
+#            echo 'default shell!'
+#            cd /test
+#            echo 'This is the default shell test with set e'
+#      - run:
+##          when: always
+#          name: default shell with pipe
+#          command: |
+#            pwd
+#            ls -al
+#            cd /test | echo 'this is a pipe'
   third-job:
 #    executor: my-executor
     machine:
