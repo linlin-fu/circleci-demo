@@ -24,7 +24,7 @@ jobs:
   second-job:
     docker:
       - image: alpine:3.7
-#    executor: my-executor
+    executor: my-executor
     steps:
       - run:
           name: Get env
