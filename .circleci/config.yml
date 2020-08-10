@@ -33,7 +33,7 @@ jobs:
           name: default shell test
           command: |
             echo 'default shell!'
-            cd /project
+            cd /test
             echo 'This is the default shell test with set e'
       - run:
           when: always
@@ -41,7 +41,7 @@ jobs:
           command: |
             pwd
             ls -al
-            cd /project | echo 'this is a pipe'
+            cd /test | echo 'this is a pipe'
   third-job:
     machine:
       image: ubuntu-1604:201903-01
