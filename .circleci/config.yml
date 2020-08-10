@@ -7,8 +7,8 @@ executors:
       - image: circleci/ruby:2.5.1-node-browsers
 jobs:
   first-job:
-#    docker:
-#      - image: alpine:3.7
+    docker:
+      - image: alpine:3.7
     executor: my-executor
     environment:
       CUSTOM_ENV: job
