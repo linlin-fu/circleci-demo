@@ -10,8 +10,6 @@ jobs:
     docker:
       - image: alpine:3.7
 #    executor: my-executor
-    environment:
-      CUSTOM_ENV: job
     steps:
       - run:
           name: Get env
