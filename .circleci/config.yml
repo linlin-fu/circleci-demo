@@ -32,7 +32,6 @@ jobs:
       - run:
           name: default shell test
           command: |
-#            set +e
             echo 'default shell!'
             cd /project
             echo 'This is the default shell test with set e'
