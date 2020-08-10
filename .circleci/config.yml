@@ -10,7 +10,6 @@ jobs:
 #    docker:
 #      - image: alpine:3.7
     executor: my-executor
-#    working_directory: /build
     environment:
       CUSTOM_ENV: job
     steps:
@@ -26,7 +25,6 @@ jobs:
 #    docker:
 #      - image: alpine:3.7
     executor: my-executor
-#    working_directory: /build
     steps:
       - run:
           name: Get env
@@ -34,11 +32,12 @@ jobs:
       - run:
           name: default shell test
           command: |
-            set +e
+#            set +e
             echo 'default shell!'
             cd /project
             echo 'This is the default shell test with set e'
       - run:
+          when: always
           name: default shell with pipe
           command: |
             set +o pipefail
