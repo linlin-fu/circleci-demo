@@ -22,8 +22,8 @@ jobs:
       - run:
           name: Get Env twice
           command: |
-          echo ${MY_CUSTOM_ENV}
-          echo ${MY_CUSTOM_ENV}
+            echo ${MY_CUSTOM_ENV}
+            echo ${MY_CUSTOM_ENV}
   second-job:
     executor: my-executor
     steps:
