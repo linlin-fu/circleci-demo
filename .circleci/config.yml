@@ -19,6 +19,11 @@ jobs:
       - run:
           name: Get Env with set env in run
           command: echo ${MY_CUSTOM_ENV}
+      - run:
+          name: Get Env twice
+          command: |
+          echo ${MY_CUSTOM_ENV}
+          echo ${MY_CUSTOM_ENV}
   second-job:
     executor: my-executor
     steps:
