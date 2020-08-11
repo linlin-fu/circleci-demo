@@ -8,7 +8,7 @@ executors:
 jobs:
   first-job:
     docker:
-      - image: alpine:3.7
+      - image: circleci/ruby:2.5.1-node-browsers
     #    executor: my-executor
     steps:
       - run:
