@@ -8,20 +8,17 @@ executors:
 jobs:
   first-job:
     docker:
-      - image: alpine:3.7
+      - image: circleci/node:10.0-browsers
     #    executor: my-executor
     steps:
       - run:
           name: Get env
           command: |
             echo 'export MY_CUSTOM_ENV="command"' >> $BASH_ENV
-            source $BASH_ENV
             echo $MY_CUSTOM_ENV
       - run:
-          #          environment:
-          #            CUSTOM_ENV: run
           name: Get Env with set env in run
-          command: echo $MY_CUSTOM_ENV
+          command: echo ${MY_CUSTOM_ENV}
   second-job:
     executor: my-executor
     steps:
